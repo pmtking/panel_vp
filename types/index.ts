@@ -5,6 +5,23 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export type authVaribelsType = {
-  username?:String ;
-  password?:String
+  username?: String;
+  password?: String
 }
+
+export type typeLoginComponentType = {
+  type?: String
+}
+
+export type NavitemType = {
+  icon: JSX.Element | any;
+  name?: String;
+  link?: String | any;
+}
+
+
+export type KeyValueComponentType = {
+  name: String;
+  value: String
+}
+

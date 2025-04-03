@@ -1,3 +1,5 @@
+
+'use client'
 import { useState, useEffect } from "react";
 
 const useAuthToken = () => {
@@ -24,4 +26,4 @@ const useAuthToken = () => {
     return { token, saveToken, removeToken, isAuthenticated: !!token }
 }
 
-export default useAuthToken ; 
+export default useAuthToken; 
