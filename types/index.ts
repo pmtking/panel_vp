@@ -5,7 +5,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export type authVaribelsType = {
-  username?: String;
+  email?: String;
   password?: String
 }
 

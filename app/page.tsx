@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import useAuthToken from "@/hooks/tockenExist";
 import SideBar from "@/components/Sidebar/page";
 import TimeLinePanel from "@/components/TimLinePanel/page";
+import TabelInbunds from "@/components/TabelInbounds/page";
 
 export default function Home() {
   const { token, saveToken, removeToken, isAuthenticated } = useAuthToken();
@@ -25,6 +26,7 @@ export default function Home() {
       <SideBar />
      <div className="flex flex-col gap-2 bg-[#111516] w-full h-[92vh] rounded-2xl border border-gray-800 px-2 py-3 ">
       <TimeLinePanel />
+      <TabelInbunds />
      </div>
     </section>
   );

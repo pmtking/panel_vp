@@ -1,21 +1,40 @@
 "use client"; // Mark this as a Client Component
 
 import useAuth from "@/hooks/useAuth";
+import Api from "@/libs/axios";
 import { typeLoginComponentType } from "@/types";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
+import { usePathname } from "next/navigation"; // Import usePathname
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 const LoginComponents = ({ type }: typeLoginComponentType) => {
-    // const { login } = useAuth();
-    const [username, setUsername] = useState("");
+    const { login } = useAuth();
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const pathname = usePathname(); // Use usePathname to get the current URL path
 
-    const handleLogin = (e: FormEvent) => {
-        e.preventDefault(); // Prevent form submission from reloading the page
-        
-        localStorage.setItem("token", "textt");
-        location.replace("/");
+    const handleLogin = async (e: FormEvent) => {
+        e.preventDefault(); 
+        console.log("Current Pathname:", pathname); // Log the current pathname
+
+        try {
+            const { data } = await Api.post('/v1/admin/adminvlnplogin', {
+                email,
+                password
+            });
+
+            if (data) {
+                console.log("Response Data:", data.data);
+                localStorage.setItem('token', data.data);
+                toast.success('Login successful');
+                // Add navigation logic as needed, e.g., redirect
+            }
+        } catch (error) {
+            console.error("Login Error:", error);
+            toast.error('Login failed');
+        }
     };
 
     return (
@@ -31,8 +50,8 @@ const LoginComponents = ({ type }: typeLoginComponentType) => {
                         variant="bordered"
                         color="primary"
                         label="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <Input
                         variant="bordered"

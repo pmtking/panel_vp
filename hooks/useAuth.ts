@@ -5,11 +5,11 @@ import toast from "react-hot-toast";
 import useAuthToken from "./tockenExist";
 
 const useAuth = () => {
-    const login = async ({username , password}:authVaribelsType) => {
+    const login = async ({email , password}:authVaribelsType) => {
         const {saveToken , token} = useAuthToken()
         try {
-            const {data} = await Api.post('/login' , {
-                username ,
+            const {data} = await Api.post('/v1/admin/adminvlnplogin' , {
+                email ,
                 password
             })
             if(data) {
