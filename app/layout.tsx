@@ -9,6 +9,10 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
+import {
+  GlobalStateContext,
+  GlobalStateProvider,
+} from "@/libs/GlobalStateProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -47,7 +51,7 @@ export default function RootLayout({
             <Toaster />
             {/* <Navbar /> */}
             <main className="px-10 ">
-              {children}
+              <GlobalStateProvider>{children}</GlobalStateProvider>
             </main>
           </div>
         </Providers>
