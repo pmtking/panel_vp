@@ -11,11 +11,11 @@ export const GlobalStateContext = createContext<
 >(undefined);
 
 type GlobalStateProviderProps = {
-  children: ReactNode; // تایپ برای props
+  children: ReactNode; 
 };
 
 export const GlobalStateProvider = ({ children }: GlobalStateProviderProps) => {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false); // تعیین نوع state
+  const [isAdmin, setIsAdmin] = useState<boolean>(false); 
 
   return (
     <GlobalStateContext.Provider value={{ isAdmin, setIsAdmin }}>

@@ -7,7 +7,7 @@ import TimeLinePanel from "@/components/TimLinePanel/page";
 import TabelInbunds from "@/components/TabelInbounds/page";
 import { GlobalStateContext } from "@/libs/GlobalStateProvider";
 
-export default function Home() {
+export default function AdminDashboard() {
   const { token, saveToken, removeToken, isAuthenticated } = useAuthToken();
 
   const context = useContext(GlobalStateContext);
@@ -25,7 +25,7 @@ export default function Home() {
       <SideBar />
       <div className="flex flex-col gap-2 bg-[#111516] w-full h-[92vh] rounded-2xl border border-gray-800 px-2 py-3 ">
         <TimeLinePanel />
-        <TabelInbunds type={isAdmin === true ? true : false} />
+        <TabelInbunds type={'admin'} />
       </div>
     </section>
   );

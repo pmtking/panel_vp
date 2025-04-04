@@ -25,3 +25,12 @@ export type KeyValueComponentType = {
   value: String
 }
 
+// Tabels Type 
+export type TabelsDataType = {
+
+}
+export type TabelsType = {
+  type?:String ;
+  data:TabelsDataType [] ;
+}
+

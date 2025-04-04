@@ -7,7 +7,7 @@ import { typeLoginComponentType } from "@/types";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { usePathname } from "next/navigation"; // Import usePathname
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const LoginComponents = ({ type }: typeLoginComponentType) => {
@@ -19,8 +19,8 @@ const LoginComponents = ({ type }: typeLoginComponentType) => {
   if (!context) {
     throw new Error("GlobalStateConext must be nused");
   }
+  const { isAdmin, setIsAdmin } = context;
   const handleLogin = async (e: FormEvent) => {
-    const { isAdmin, setIsAdmin } = context;
     e.preventDefault();
     console.log("Current Pathname:", pathname); // Log the current pathname
     if (pathname === "/login@admin_2456") {
@@ -61,6 +61,12 @@ const LoginComponents = ({ type }: typeLoginComponentType) => {
       toast.error("Login failed");
     }
   };
+  useEffect(() => {
+    if (isAdmin) {
+      console.log("User is now admin!");
+      location.replace("/"); // مثال
+    }
+  }, [isAdmin]);
 
   return (
     <>

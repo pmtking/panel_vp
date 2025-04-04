@@ -47,13 +47,11 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <GlobalStateProvider>
             <Toaster />
             {/* <Navbar /> */}
-            <main className="px-10 ">
-              <GlobalStateProvider>{children}</GlobalStateProvider>
-            </main>
-          </div>
+            <main className="px-10 ">{children}</main>
+          </GlobalStateProvider>
         </Providers>
       </body>
     </html>
